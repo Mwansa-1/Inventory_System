@@ -7,7 +7,8 @@ class ApiService {
   ApiService({required this.baseUrl});
 
   Future<Map<String, dynamic>> fetchProduct(String barcode) async {
-    final response = await http.get(Uri.parse('$baseUrl/products/$barcode'));
+    final response =
+        await http.get(Uri.parse('$baseUrl/inventory/product/$barcode/'));
 
     if (response.statusCode == 200) {
       return json.decode(response.body);
@@ -18,7 +19,7 @@ class ApiService {
 
   Future<void> addProduct(String name, int quantity, String barcode) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/products'),
+      Uri.parse('$baseUrl/inventory/add-product/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

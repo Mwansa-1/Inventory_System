@@ -43,9 +43,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                // navigate to add product page
-                // use navigator.push
-                MaterialPageRoute(builder: (context) => AddPage());
+                // Navigate to AddPage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FetchPage()),
+                );
               },
               child: Text("Fetch"),
             )
@@ -54,8 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // navigate to add product page
-          MaterialPageRoute(builder: (context) => AddPage());
+          // Navigate to AddPage
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddPage()),
+          );
         },
         child: const Icon(Icons.add),
       ),

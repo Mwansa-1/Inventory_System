@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-// import the camera and the barcode scanner packages
-import 'package:camera/camera.dart';
-// import simple scanner
 import 'package:barcode_scan2/barcode_scan2.dart';
-
 import 'product_details.dart';
 
 class FetchPage extends StatelessWidget {
@@ -17,21 +13,25 @@ class FetchPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
-          //scan the barcode
-          children: [
-            ElevatedButton(
-              onPressed: () async {
-                // scan the barcode
-                String barcode = (await BarcodeScanner.scan()) as String;
-                // navigate to product details page
+        children: [
+          ElevatedButton(
+            onPressed: () async {
+              // Scan the barcode
+              var scanResult = await BarcodeScanner.scan();
+              String barcode = scanResult.rawContent;
+
+              // Navigate to product details page with the scanned barcode
+              Navigator.push(
+                context,
                 MaterialPageRoute(
-                    builder: (context) => ProductDetailPage(
-                          product: {},
-                        ));
-              },
-              child: Text("Scan Barcode"),
-            ),
-          ]),
+                  builder: (context) => ProductDetailPage(barcode: barcode),
+                ),
+              );
+            },
+            child: Text("Scan Barcode"),
+          ),
+        ],
+      ),
     );
   }
 }

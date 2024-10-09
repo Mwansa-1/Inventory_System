@@ -10,7 +10,7 @@ class AddPage extends StatelessWidget {
     final TextEditingController qtyController = TextEditingController();
     final TextEditingController barcodeController = TextEditingController();
     final ApiService apiService =
-        ApiService(baseUrl: 'https://your-api-url.com');
+        ApiService(baseUrl: 'http://192.168.20.247:8001');
 
     return Scaffold(
       appBar: AppBar(
